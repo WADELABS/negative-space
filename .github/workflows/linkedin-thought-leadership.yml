@@ -1,0 +1,13 @@
+name: LinkedIn Thought Leadership
+on:
+  schedule:
+    - cron: '0 0 1,15 * *' # Bi-weekly
+
+jobs:
+  generate-insight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Epistemology Post
+        run: |
+          echo "Automated Thought Leadership: Mapping the 'Negative Space' in AI Knowledge Representation."
+          echo "Prompting the network on the necessity of Void Mapping for safe LLM deployment."
