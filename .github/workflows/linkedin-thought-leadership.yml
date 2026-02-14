@@ -6,11 +6,14 @@ on:
 jobs:
   generate-insight:
     runs-on: ubuntu-latest
+    env:
+      N8N_THOUGHT_LEADERSHIP_WEBHOOK: ${{ secrets.N8N_THOUGHT_LEADERSHIP_WEBHOOK }}
+      LINKEDIN_PERSON_URN: ${{ secrets.LINKEDIN_PERSON_URN }}
     steps:
       - name: Trigger Epistemology Insight Generation
         run: |
           # Professional constraint: Zero emojis.
-          curl -X POST "${{ secrets.N8N_THOUGHT_LEADERSHIP_WEBHOOK }}" \
+          curl -X POST "$N8N_THOUGHT_LEADERSHIP_WEBHOOK" \
             -H "Content-Type: application/json" \
-            -d '{"project": "negative-space", "topic": "Epistemology", "focus": "Void Mapping", "author": "${{ secrets.LINKEDIN_PERSON_URN }}"}'
+            -d "{\"project\": \"negative-space\", \"topic\": \"Epistemology\", \"focus\": \"Void Mapping\", \"author\": \"$LINKEDIN_PERSON_URN\"}"
         continue-on-error: true
