@@ -7,7 +7,9 @@ jobs:
   generate-insight:
     runs-on: ubuntu-latest
     steps:
-      - name: Epistemology Post
+      - name: Trigger Epistemology Insight Generation
         run: |
-          echo "Automated Thought Leadership: Mapping the 'Negative Space' in AI Knowledge Representation."
-          echo "Prompting the network on the necessity of Void Mapping for safe LLM deployment."
+          curl -X POST "${{ secrets.N8N_THOUGHT_LEADERSHIP_WEBHOOK }}" \
+            -H "Content-Type: application/json" \
+            -d '{"project": "negative-space", "topic": "Epistemology", "focus": "Void Mapping"}'
+        continue-on-error: true
