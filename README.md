@@ -41,5 +41,8 @@ The core engine of Negative Space is **Uncertainty Quantification (UQ)**, which 
 python portfolio_demo.py
 ```
 
+## ⚖️ Governance & Alignment
+To prevent over-reliance on automated metrics, Negative Space mandates human expert review for any decision chain where "Void Density" exceeds 15%. The system is designed to augment human oversight by highlighting precisely where knowledge is thin, rather than attempting to automate decisions in high-uncertainty zones.
+
 ---
 *Developed for WADELABS Knowledge Engineering Research 2026*
