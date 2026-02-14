@@ -4,8 +4,8 @@ from datetime import datetime
 import sys
 import os
 
-# Ensure local 'src' is in path
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), ".")))
+# Add project root to path for local imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
 # Internal Imports
 from src.void.interpolation.engine import VoidInterpolator, MultispectralMapper

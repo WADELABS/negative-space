@@ -10,12 +10,14 @@ __version__ = "0.1.0"
 # Core exports
 from .agent import VoidAgent, VoidCollective
 from .visualization import VoidVisualizer
-from .core import GapCriticality, GapFillability
+from .core import GapCriticality, VoidType, Gap, VoidMap
 
 __all__ = [
     "VoidAgent",
     "VoidCollective", 
     "VoidVisualizer",
     "GapCriticality",
-    "GapFillability",
+    "VoidType",
+    "Gap",
+    "VoidMap",
 ]

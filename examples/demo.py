@@ -4,6 +4,12 @@ DEMO: Negative Space Framework in Action.
 
 import asyncio
 import logging
+import sys
+import os
+
+# Add project root to path for local imports
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 from src.negative_space.agent import VoidAgent, VoidCollective
 from src.negative_space.visualization import VoidVisualizer
 
