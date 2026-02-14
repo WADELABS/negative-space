@@ -1,0 +1,44 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "negative-space"
+version = "0.1.0"
+description = "A framework for reasoning about unknowns and gaps - mapping the void between current and desired states"
+readme = "README.md"
+requires-python = ">=3.8"
+license = {text = "MIT"}
+authors = [
+    {name = "WADELABS", email = "research@wadelabs.ai"}
+]
+keywords = ["ai", "agents", "reasoning", "gap-analysis", "void-mapping"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.20.0",
+    "networkx>=2.6.0",
+    "matplotlib>=3.4.0",
+    "dataclasses-json>=0.5.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/WADELABS/negative-space"
+Repository = "https://github.com/WADELABS/negative-space"
+Issues = "https://github.com/WADELABS/negative-space/issues"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["negative_space*"]
+
+[tool.setuptools.package-data]
+negative_space = ["py.typed"]
