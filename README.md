@@ -16,8 +16,8 @@
 >
 > **The framework didn't give him data he didn't have. It gave him a way to see the shape of what was missing—and that turned out to be enough."**
 
-## 🏛️ FORENSIC SUMMARY: Quantifying the Abyss
-Negative Space is a high-fidelity **Epistemological Substrate** designed for the study and quantification of "Computational Doubt." It moves beyond simple knowledge retrieval and into the rigorous mapping of the **Unknown**.
+## 🏛️ FORENSIC SUMMARY: The Reverse-Engineering Pillar
+Negative Space is a high-fidelity **Epistemological Substrate** designed for the study and quantification of "Computational Doubt." It moves beyond simple knowledge retrieval and into the rigorous mapping of the **Unknown** via black-box reverse engineering.
 
 ### 🧠 Core Substrate Pillars
 1. **Ontological Mapping**: Identifying the boundaries of a model's knowledge graph.
