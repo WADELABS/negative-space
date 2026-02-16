@@ -1,6 +1,21 @@
 """
-Featured Demo: Comprehensive Negative Space Framework Showcase
-Demonstrates migration from monolith to microservices architecture.
+Featured Demo: Monolith to Microservices Migration
+
+This demo showcases the Negative Space Framework's capability to analyze
+a realistic software engineering scenario: migrating from a monolithic
+application to a microservices architecture.
+
+It demonstrates:
+- Comprehensive void mapping
+- Gap criticality analysis across 8 void types
+- Strategic navigation planning
+- JSON report generation
+- Key metrics: void density, navigability, connectivity
+
+Run with:
+    python examples/featured_demo.py
+    or
+    python -m negative_space.demo
 """
 
 import asyncio
@@ -114,136 +129,144 @@ async def monolith_to_microservices_demo():
     
     # Summary metrics
     summary = report['summary']
-    print("📈 KEY METRICS")
-    print("-" * 70)
-    print(f"  Total Gaps Identified:    {summary['total_gaps']}")
-    print(f"  Void Density:            {summary['void_density']:.3f} (0=nothing missing, 1=everything missing)")
-    print(f"  Navigability:            {summary.get('navigability', 0.0):.3f} (0=impassable, 1=clear path)")
-    print(f"  Connectivity:            {summary.get('connectivity', 0.0):.3f} (gap interdependence)")
-    print(f"  Blocking Gaps:           {summary.get('blocking_gaps', 0)}")
-    print(f"  Fillable Gaps:           {summary.get('fillable_gaps', 0)}")
+    print("📊 SUMMARY METRICS:")
+    print(f"   Total gaps identified: {summary['total_gaps']}")
+    print(f"   Void density: {summary['void_density']:.3f} (0=nothing missing, 1=almost everything missing)")
+    print(f"   Navigability: {summary['navigability']:.3f} (0=many bottlenecks, 1=clear paths)")
+    print(f"   Connectivity: {summary['connectivity']:.3f} (0=isolated gaps, 1=highly connected)")
     print()
-    
-    # Gap criticality distribution
-    if 'patterns' in report and 'criticality_distribution' in report['patterns']:
-        print("🎯 GAP CRITICALITY DISTRIBUTION")
-        print("-" * 70)
-        for criticality, count in report['patterns']['criticality_distribution'].items():
-            print(f"  {criticality:15s}: {count:3d} gaps")
-        print()
     
     # Critical findings
     if report['critical_findings']:
-        print("⚠️  CRITICAL FINDINGS (Top 5)")
-        print("-" * 70)
+        print("⚠️  CRITICAL FINDINGS:")
+        print(f"   {len(report['critical_findings'])} critical gaps require immediate attention")
+        print()
         for i, finding in enumerate(report['critical_findings'][:5], 1):
-            print(f"{i}. [{finding['void_type']}] {finding['description']}")
-            print(f"   Criticality: {finding['criticality']} | Certainty: {finding['certainty']}")
+            print(f"   {i}. {finding['description']}")
+            print(f"      Type: {finding.get('type', 'UNKNOWN')}")
+            print(f"      Certainty: {finding.get('certainty', 'UNKNOWN')}")
+            print()
+    
+    # Gap distribution by type
+    patterns = report.get('patterns', {})
+    gap_dist = patterns.get('gap_distribution', {})
+    if gap_dist:
+        print("📈 GAP DISTRIBUTION BY TYPE:")
+        for gap_type, count in sorted(gap_dist.items(), key=lambda x: x[1], reverse=True):
+            print(f"   {gap_type}: {count} gaps")
         print()
     
+    # Criticality distribution
+    crit_dist = patterns.get('criticality_distribution', {})
+    if crit_dist:
+        print("🚨 CRITICALITY DISTRIBUTION:")
+        for level, count in sorted(crit_dist.items(), 
+                                   key=lambda x: {'BLOCKING': 4, 'HIGH': 3, 'MEDIUM': 2, 'LOW': 1, 'UNKNOWN': 0}.get(x[0], 0),
+                                   reverse=True):
+            print(f"   {level}: {count} gaps")
+        print()
+    
+    # Fillability analysis
+    fillability_rate = patterns.get('fillability_rate', 0)
+    print("🔧 FILLABILITY ANALYSIS:")
+    print(f"   {fillability_rate*100:.1f}% of gaps appear fillable")
+    if fillability_rate > 0.7:
+        print("   ✓ Optimistic: Most gaps can be addressed")
+    elif fillability_rate < 0.3:
+        print("   ⚠ Pessimistic: Many gaps may be structural constraints")
+    else:
+        print("   ≈ Moderate: Balanced mix of fillable and structural gaps")
+    print()
+    
     # Gap clusters
-    if report.get('clusters'):
-        print("🔗 GAP CLUSTERS")
-        print("-" * 70)
-        for i, cluster in enumerate(report['clusters'][:3], 1):
-            print(f"Cluster {i}: {len(cluster.get('gaps', []))} related gaps")
-            print(f"  Density: {cluster.get('density', 0):.3f} | Strategic importance: {cluster.get('strategic_importance', 0):.3f}")
+    clusters = report.get('gap_clusters', [])
+    if clusters:
+        print("🔗 GAP CLUSTERING:")
+        print(f"   {len(clusters)} clusters identified")
+        for cluster in clusters[:3]:
+            print(f"   - Cluster {cluster.get('id', 'unknown')}: {cluster.get('size', 0)} gaps ({cluster.get('type', 'unknown')})")
         print()
     
     # Navigation plan
-    if report.get('navigation_plan'):
-        nav_plan = report['navigation_plan']
-        print("🗺️  RECOMMENDED NAVIGATION PLAN")
-        print("-" * 70)
-        print(f"Strategy: {nav_plan.get('strategy', 'Unknown')}")
-        if 'path' in nav_plan and nav_plan['path']:
-            print("\nSuggested Path (first 5 steps):")
-            for i, step in enumerate(nav_plan['path'][:5], 1):
-                print(f"{i}. {step.get('description', 'N/A')}")
-                print(f"   Action: {step.get('action', 'N/A')}")
-                if 'estimated_cost' in step:
-                    print(f"   Est. Cost: ${step['estimated_cost']:,.0f} | Time: {step.get('estimated_time', 0):.1f} days")
-        if 'total_cost' in nav_plan:
-            print(f"\nTotal Estimated Cost: ${nav_plan['total_cost']:,.0f}")
-            print(f"Total Estimated Time: {nav_plan.get('total_time', 0):.1f} days")
+    nav_plan = report.get('navigation_plan', {})
+    if nav_plan:
+        strategy = nav_plan.get('strategy', 'unknown')
+        print("🧭 NAVIGATION STRATEGY:")
+        print(f"   Recommended: {strategy}")
+        
+        path = nav_plan.get('path', [])
+        if path:
+            print(f"   Path has {len(path)} steps")
+            if len(path) > 0:
+                print(f"   First step: {path[0].get('description', 'unknown')}")
+        
+        total_cost = nav_plan.get('total_cost', 0)
+        total_time = nav_plan.get('total_time', 0)
+        if total_cost > 0:
+            print(f"   Estimated cost: ${total_cost:,.0f}")
+        if total_time > 0:
+            print(f"   Estimated time: {total_time:.1f} months")
         print()
     
     # Recommendations
-    if report['recommendations']:
-        print("💡 RECOMMENDATIONS")
-        print("-" * 70)
-        for i, rec in enumerate(report['recommendations'], 1):
-            print(f"{i}. {rec}")
+    recommendations = report.get('recommendations', [])
+    if recommendations:
+        print("💡 RECOMMENDATIONS:")
+        for i, rec in enumerate(recommendations, 1):
+            print(f"   {i}. {rec}")
         print()
     
-    # ============== EXPORT JSON REPORT ==============
+    # Insights
+    insights = patterns.get('insights', [])
+    if insights:
+        print("🔍 INSIGHTS:")
+        for insight in insights:
+            print(f"   • {insight}")
+        print()
     
-    print("="*70)
-    print("EXPORTING REPORTS")
-    print("="*70)
+    # ========================================================================
+    # SAVE JSON REPORT
+    # ========================================================================
+    print("="*80)
+    print(" SAVING REPORTS")
+    print("="*80)
     print()
     
-    # Save full JSON report
-    output_file = Path(__file__).parent.parent / "demo_output_report.json"
-    with open(output_file, 'w') as f:
+    # Add metadata to report for JSON schema compliance
+    report['schema_version'] = '1.0'
+    report['timestamp'] = datetime.now().isoformat()
+    report['void_map_id'] = summary.get('void_map_id', 'demo_migration')
+    
+    # Save detailed JSON report to current directory for easy access
+    report_path = Path.cwd() / 'demo_output_report.json'
+    with open(report_path, 'w') as f:
         json.dump(report, f, indent=2, default=str)
-    print(f"✅ Full JSON report saved to: {output_file}")
     
-    # Also save a simplified console-friendly version
-    console_report = {
-        "scenario": "Monolith to Microservices Migration",
-        "summary": summary,
-        "critical_findings_count": len(report['critical_findings']),
-        "top_blocking_gaps": [
-            f for f in report['critical_findings'] 
-            if f['criticality'] == 'BLOCKING'
-        ][:3],
-        "recommendations": report['recommendations'][:5],
-    }
-    
-    console_file = Path(__file__).parent.parent / "demo_console_report.json"
-    with open(console_file, 'w') as f:
-        json.dump(console_report, f, indent=2, default=str)
-    print(f"✅ Console report saved to: {console_file}")
+    print(f"✅ Detailed JSON report saved to: {report_path}")
+    print(f"   File size: {report_path.stat().st_size} bytes")
     print()
     
-    # ============== COLLECTIVE MAPPING (OPTIONAL) ==============
-    
-    print("="*70)
-    print("COLLECTIVE VOID MAPPING (Multi-Agent Consensus)")
-    print("="*70)
-    print()
-    print("Running collective mapping with specialized agents...")
-    
-    collective = VoidCollective()
-    collective_report = await collective.collective_void_mapping(point_a, point_b, context)
-    
-    print(f"✅ Collective analysis complete")
-    print(f"   Consensus result: {collective_report.get('consensus', 'N/A')}")
-    print(f"   Agreement score: {collective_report.get('agreement_score', 0):.3f}")
-    print()
-    
-    # ============== FINAL SUMMARY ==============
-    
-    print("="*70)
-    print("DEMO COMPLETE")
-    print("="*70)
-    print()
-    print("This demo showcased:")
-    print("  ✓ Comprehensive void mapping between two states")
-    print("  ✓ Multi-dimensional gap characterization")
-    print("  ✓ Criticality and navigability analysis")
-    print("  ✓ Strategic navigation planning")
-    print("  ✓ JSON report generation for tool integration")
-    print("  ✓ Multi-agent collective consensus")
+    print("="*80)
+    print(" DEMO COMPLETE")
+    print("="*80)
     print()
     print("Next steps:")
-    print("  → Review demo_output_report.json for full analysis")
-    print("  → Integrate void reports into your CI/CD pipeline")
-    print("  → Explore docs/GLOSSARY.md for terminology")
-    print("  → Check docs/VOID_REPORT_SCHEMA.md for JSON schema")
+    print("  1. Review the JSON report: demo_output_report.json")
+    print("  2. Examine the void types and criticality levels")
+    print("  3. Follow the navigation plan for migration")
+    print("  4. Address blocking gaps first")
     print()
+    print("Learn more:")
+    print("  - Glossary: docs/GLOSSARY.md")
+    print("  - JSON Schema: docs/VOID_REPORT_SCHEMA.md")
+    print("  - Examples: examples/README.md")
+    print()
+    
+    return report
 
+def main():
+    """Entry point for the featured demo."""
+    asyncio.run(featured_demo())
 
 if __name__ == "__main__":
-    asyncio.run(monolith_to_microservices_demo())
+    main()

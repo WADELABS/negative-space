@@ -135,27 +135,6 @@ python examples/quickstart.py
 
 **Legend:** ✅ Implemented | 🔄 Planned | ⚠️ Experimental
 
-## 📚 Documentation
-
-- **[Glossary](docs/GLOSSARY.md)** - Comprehensive terminology guide for practitioners and researchers
-- **[JSON Schema](docs/VOID_REPORT_SCHEMA.md)** - Void report structure for tool integration
-- **[Examples](examples/README.md)** - Detailed examples documentation
-- **[Manifesto](manifesto/MANIFESTO.md)** - Philosophical foundation and epistemology
-
-## 🚢 PyPI Publishing
-
-This package is ready for PyPI publication:
-
-```bash
-# Build the package
-python -m build
-
-# Upload to PyPI (requires credentials)
-python -m twine upload dist/*
-```
-
-Or use the automated GitHub Actions workflow on release.
-
 ---
 docs: formalize high-fidelity documentation and epistemological grounding
 *Developed for WADELABS AI Safety Research 2026*
