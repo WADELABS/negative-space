@@ -41,8 +41,31 @@ async def async_main():
     args = parser.parse_args()
     
     # Load states
-    point_a = json.loads(Path(args.current).read_text())
-    point_b = json.loads(Path(args.goal).read_text())
+    try:
+        point_a = json.loads(Path(args.current).read_text())
+    except FileNotFoundError:
+        print(f"❌ Error: Could not find current state file: {args.current}")
+        return
+    except json.JSONDecodeError as e:
+        print(f"❌ Error: Invalid JSON in current state file: {args.current}")
+        print(f"   {e}")
+        return
+    except Exception as e:
+        print(f"❌ Error reading current state file: {e}")
+        return
+    
+    try:
+        point_b = json.loads(Path(args.goal).read_text())
+    except FileNotFoundError:
+        print(f"❌ Error: Could not find goal state file: {args.goal}")
+        return
+    except json.JSONDecodeError as e:
+        print(f"❌ Error: Invalid JSON in goal state file: {args.goal}")
+        print(f"   {e}")
+        return
+    except Exception as e:
+        print(f"❌ Error reading goal state file: {e}")
+        return
     
     # Map voids
     agent = VoidAgent(name="CLI-Agent", rigor=args.rigor)
@@ -62,8 +85,13 @@ async def async_main():
     
     # Save if requested
     if args.output:
-        Path(args.output).write_text(json.dumps(report, indent=2, default=str))
-        print(f"\n💾 Report saved to: {args.output}")
+        try:
+            Path(args.output).write_text(json.dumps(report, indent=2, default=str))
+            print(f"\n💾 Report saved to: {args.output}")
+        except PermissionError:
+            print(f"\n❌ Error: Permission denied writing to: {args.output}")
+        except Exception as e:
+            print(f"\n❌ Error writing report: {e}")
 
 def main():
     """Synchronous entry point for CLI."""
