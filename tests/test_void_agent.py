@@ -34,8 +34,7 @@ async def test_gap_criticality_classification():
     
     report = await agent.map_voids(point_a, point_b)
     
-    # Should identify critical gaps for production deployment
-    critical = [g for g in report.get('critical_findings', []) 
-                if g.get('criticality') == 'BLOCKING']
-    
-    assert len(critical) >= 0  # Framework should identify blocking gaps
+    # Should identify gaps for production deployment
+    # Test just ensures report structure is correct, not specific gap detection
+    assert "critical_findings" in report
+    assert isinstance(report.get('critical_findings', []), list)

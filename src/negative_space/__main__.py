@@ -9,7 +9,8 @@ import json
 from pathlib import Path
 from negative_space import VoidAgent
 
-async def main():
+async def async_main():
+    """Async main function for void mapping."""
     parser = argparse.ArgumentParser(
         description="Negative Space Framework - Map voids between states"
     )
@@ -64,5 +65,9 @@ async def main():
         Path(args.output).write_text(json.dumps(report, indent=2, default=str))
         print(f"\n💾 Report saved to: {args.output}")
 
+def main():
+    """Synchronous entry point for CLI."""
+    asyncio.run(async_main())
+
 if __name__ == "__main__":
-    asyncio.run(main())
+    main()
