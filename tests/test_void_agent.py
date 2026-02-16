@@ -37,4 +37,4 @@ async def test_gap_criticality_classification():
     # Should identify gaps for production deployment
     # Test just ensures report structure is correct, not specific gap detection
     assert "critical_findings" in report
-    assert isinstance(report.get('critical_findings', []), list)
+    assert isinstance(report['critical_findings'], list)
