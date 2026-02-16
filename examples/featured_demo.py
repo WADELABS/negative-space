@@ -279,18 +279,13 @@ async def featured_demo():
     report['timestamp'] = datetime.now().isoformat()
     report['void_map_id'] = summary.get('void_map_id', 'demo_migration')
     
-    # Save detailed JSON report
-    report_path = Path(__file__).parent.parent / 'demo_output_report.json'
+    # Save detailed JSON report to current directory for easy access
+    report_path = Path.cwd() / 'demo_output_report.json'
     with open(report_path, 'w') as f:
         json.dump(report, f, indent=2, default=str)
     
     print(f"✅ Detailed JSON report saved to: {report_path}")
     print(f"   File size: {report_path.stat().st_size} bytes")
-    print()
-    
-    # Save console output
-    console_output_path = Path(__file__).parent.parent / 'demo_output.txt'
-    print(f"💾 Console output available at: {console_output_path}")
     print()
     
     print("="*80)
