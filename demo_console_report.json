@@ -1,0 +1,13 @@
+{
+  "scenario": "Monolith to Microservices Migration",
+  "summary": {
+    "void_map_id": "void_map_4e1970178e00426c",
+    "total_gaps": 4,
+    "void_density": 0.2111111111111111,
+    "navigability": 1.0,
+    "connectivity": 1.0
+  },
+  "critical_findings_count": 0,
+  "top_blocking_gaps": [],
+  "recommendations": []
+}

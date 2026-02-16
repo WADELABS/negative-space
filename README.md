@@ -26,6 +26,11 @@ graph TD
 
 ## 🚀 Installation
 
+### From PyPI (Recommended)
+```bash
+pip install negative-space
+```
+
 ### From Source
 ```bash
 # Clone the repository
@@ -34,20 +39,14 @@ cd negative-space
 
 # Install in development mode
 pip install -e .
+
+# Install with development dependencies
+pip install -e ".[dev]"
 ```
 
-### From PyPI (Ready for Publication)
-```bash
-pip install negative-space
-```
-
-**Note:** The package is ready for PyPI publication with comprehensive packaging, documentation, and demos.
-
-## 📚 Documentation
-
-- **[Glossary](docs/GLOSSARY.md)** - Core concepts, gap types, and metrics explained
-- **[JSON Schema](docs/VOID_REPORT_SCHEMA.md)** - Void report structure for integration
-- **[Examples](examples/README.md)** - Runnable demos with expected output
+**Requirements:**
+- Python 3.8 or higher
+- numpy, networkx, matplotlib, dataclasses-json
 
 ## 🛰️ The "Now": Mapping Architectural Voids
 The following snippet demonstrates use of the `VoidAgent` to perform a rigorous assessment of the gap between a local environment and a production-ready Kubernetes deployment.
@@ -76,7 +75,7 @@ print(f"Mapped {len(critical_voids)} blocking voids in the production path.")
 After installation, you can run the example demos:
 
 ```bash
-# Featured demo - comprehensive showcase
+# Featured demo (recommended) - Comprehensive microservices migration scenario
 python examples/featured_demo.py
 
 # Basic demo
@@ -84,9 +83,12 @@ python examples/demo.py
 
 # Advanced portfolio demo
 python examples/portfolio_demo.py
+
+# Quick start
+python examples/quickstart.py
 ```
 
-For detailed documentation on all examples, see [examples/README.md](examples/README.md).
+**See [`examples/README.md`](examples/README.md) for detailed documentation of all examples.**
 
 ## 📊 Strategic Metrics
 | Metric | Purpose | Agent Insight |

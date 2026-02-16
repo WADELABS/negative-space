@@ -1,6 +1,5 @@
 """
 Featured Demo: Monolith to Microservices Migration
-====================================================
 
 This demo showcases the Negative Space Framework's capability to analyze
 a realistic software engineering scenario: migrating from a monolithic
@@ -22,151 +21,110 @@ Run with:
 import asyncio
 import json
 import logging
-from datetime import datetime
 from pathlib import Path
 
-from negative_space import VoidAgent, GapCriticality, VoidType
+from negative_space import VoidAgent, VoidCollective, GapCriticality, VoidType
 
-async def featured_demo():
+
+async def monolith_to_microservices_demo():
     """
-    Comprehensive demonstration of negative space reasoning
-    for a monolith-to-microservices migration.
+    Comprehensive demo: Mapping the void between monolith and microservices.
+    This represents a realistic software architecture transformation scenario.
     """
-    
-    # Configure logging
     logging.basicConfig(
-        level=logging.INFO,
-        format='%(asctime)s - %(name)s - %(message)s'
+        level=logging.WARNING,  # Reduce noise for demo
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
     )
     
-    print("="*80)
-    print(" NEGATIVE SPACE FRAMEWORK - FEATURED DEMO")
-    print(" Scenario: Monolith to Microservices Migration")
-    print("="*80)
+    print("="*70)
+    print("NEGATIVE SPACE FRAMEWORK - FEATURED DEMO")
+    print("Scenario: Monolith to Microservices Migration")
+    print("="*70)
     print()
     
-    # ========================================================================
-    # POINT A: Current State (Monolithic Application)
-    # ========================================================================
+    # Define Point A: Current Monolith State
     point_a = {
-        "architecture": "monolith",
-        "deployment": "single_vm",
-        "database": "single_postgres",
+        "architecture": "monolithic",
+        "deployment": "single_server",
+        "database": "shared_mysql",
         "auth": "session_based",
-        "scaling": "vertical_only",
-        "monitoring": "basic_logs",
-        "team_structure": "single_team",
-        "cicd": "manual_deployment",
-        "api_gateway": False,
-        "service_mesh": False,
-        "containers": False,
+        "services": ["user_management", "order_processing", "inventory"],
+        "containerization": False,
         "orchestration": None,
-        "observability": "minimal",
-        "fault_tolerance": "none",
-        "data_consistency": "acid",
-        "security": "perimeter_defense",
-        "documentation": "outdated",
-        "team_skills": ["python", "sql"],
+        "monitoring": "basic_logs",
+        "scaling": "vertical",
+        "latency_p99": 2000,  # ms
+        "deployment_time": 120,  # minutes
+        "team_size": 8,
         "budget": 50000,
-        "timeline_months": 0
     }
     
-    # ========================================================================
-    # POINT B: Target State (Microservices Architecture)
-    # ========================================================================
+    # Define Point B: Target Microservices State
     point_b = {
         "architecture": "microservices",
         "deployment": "kubernetes_cluster",
         "database": "polyglot_persistence",
-        "auth": "oauth2_jwt",
-        "scaling": "horizontal_autoscaling",
-        "monitoring": "distributed_tracing",
-        "team_structure": "autonomous_teams",
-        "cicd": "gitops_automated",
-        "api_gateway": True,
-        "service_mesh": True,
-        "containers": True,
-        "orchestration": "kubernetes",
-        "observability": "prometheus_grafana_jaeger",
-        "fault_tolerance": "circuit_breakers_retries",
-        "data_consistency": "eventual_consistency",
-        "security": "zero_trust",
-        "documentation": "api_specs_runbooks",
-        "team_skills": ["python", "sql", "kubernetes", "docker", "go", "terraform"],
-        "budget": 500000,
-        "timeline_months": 12,
-        "service_count": 15,
-        "deployment_frequency": "multiple_per_day"
+        "auth": "jwt_oauth2",
+        "services": [
+            "user_service",
+            "order_service", 
+            "inventory_service",
+            "notification_service",
+            "analytics_service"
+        ],
+        "containerization": True,
+        "orchestration": "k8s",
+        "monitoring": "observability_stack",  # Prometheus, Grafana, Jaeger
+        "scaling": "horizontal_auto",
+        "latency_p99": 200,  # ms
+        "deployment_time": 5,  # minutes (CI/CD)
+        "api_gateway": "kong",
+        "service_mesh": "istio",
+        "event_bus": "kafka",
+        "team_size": 15,
+        "budget": 200000,
     }
     
-    # ========================================================================
-    # CONTEXT: Constraints, Dependencies, and Ethical Concerns
-    # ========================================================================
+    # Context: Constraints, dependencies, and considerations
     context = {
         "dependencies": {
-            "kubernetes_deployment": ["containers", "orchestration", "cicd"],
-            "service_mesh": ["kubernetes_deployment", "observability"],
-            "horizontal_scaling": ["containers", "orchestration"],
-            "distributed_tracing": ["service_mesh", "observability"],
-            "autonomous_teams": ["team_skills", "documentation"],
-            "zero_trust": ["auth", "api_gateway", "service_mesh"]
+            "k8s_deployment": ["containerization", "orchestration_knowledge"],
+            "service_mesh": ["k8s_deployment", "network_policies"],
+            "observability": ["distributed_tracing", "metrics_collection"],
+            "api_gateway": ["service_discovery", "routing_rules"],
         },
         "constraints": {
-            "max_budget": 600000,
-            "max_timeline_months": 18,
-            "cannot_stop_production": True,
-            "team_size": 8,
-            "regulatory_compliance": ["GDPR", "SOC2"]
+            "max_budget": 250000,
+            "timeline_months": 12,
+            "zero_downtime_required": True,
+            "data_migration_complexity": "high",
         },
         "ethical_concerns": [
-            "data_migration_risk",
-            "service_availability_during_transition",
-            "team_training_burnout",
-            "technical_debt_vs_new_features"
+            "data_privacy_during_migration",
+            "service_reliability_guarantees",
+            "technical_debt_communication",
         ],
-        "business_goals": {
-            "improve_scalability": "high_priority",
-            "reduce_deployment_time": "high_priority",
-            "improve_fault_tolerance": "medium_priority",
-            "enable_team_autonomy": "medium_priority"
-        }
+        "risks": [
+            "distributed_system_complexity",
+            "network_latency_issues",
+            "eventual_consistency_challenges",
+        ]
     }
     
-    print("📍 POINT A (Current State):")
-    print(f"   Architecture: {point_a['architecture']}")
-    print(f"   Deployment: {point_a['deployment']}")
-    print(f"   Team: {len(point_a['team_skills'])} core skills")
+    # Create void agent with high rigor for production readiness assessment
+    print("🔍 Initializing Void Agent (rigor=0.85)...")
+    void_agent = VoidAgent(name="ArchitectureMapper", rigor=0.85)
+    
+    # Map the void
+    print("📊 Mapping void between monolith and microservices...")
     print()
+    report = await void_agent.map_voids(point_a, point_b, context)
     
-    print("🎯 POINT B (Target State):")
-    print(f"   Architecture: {point_b['architecture']}")
-    print(f"   Deployment: {point_b['deployment']}")
-    print(f"   Team: {len(point_b['team_skills'])} required skills")
-    print(f"   Timeline: {point_b['timeline_months']} months")
-    print(f"   Budget: ${point_b['budget']:,}")
-    print()
+    # ============== DISPLAY RESULTS ==============
     
-    print("🔍 Initializing Void Agent...")
-    agent = VoidAgent(name="ArchitectureMigrationAnalyzer", rigor=0.85)
-    print(f"   Agent: {agent.name}")
-    print(f"   Rigor: {agent.rigor}")
-    print()
-    
-    # ========================================================================
-    # VOID MAPPING: Identify all gaps between A and B
-    # ========================================================================
-    print("🗺️  Mapping voids between current state and target state...")
-    print("   This may take a moment as we analyze the gap space...")
-    print()
-    
-    report = await agent.map_voids(point_a, point_b, context)
-    
-    # ========================================================================
-    # DISPLAY RESULTS
-    # ========================================================================
-    print("="*80)
-    print(" VOID ANALYSIS RESULTS")
-    print("="*80)
+    print("="*70)
+    print("VOID ANALYSIS RESULTS")
+    print("="*70)
     print()
     
     # Summary metrics

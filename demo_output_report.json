@@ -1,8 +1,8 @@
 {
   "summary": {
-    "void_map_id": "void_map_90bb8707bd3ddba7",
-    "total_gaps": 3,
-    "void_density": 0.175,
+    "void_map_id": "void_map_4e1970178e00426c",
+    "total_gaps": 4,
+    "void_density": 0.2111111111111111,
     "navigability": 1.0,
     "connectivity": 1.0
   },
@@ -11,15 +11,22 @@
     "strategy": "gap_hopping",
     "path": [
       {
-        "gap_id": "missing_attr_deployment_frequency",
-        "description": "Attribute 'deployment_frequency' exists in B but not in A",
+        "gap_id": "missing_attr_api_gateway",
+        "description": "Attribute 'api_gateway' exists in B but not in A",
         "action": "Fill DEPENDENCY_GAP gap",
         "estimated_cost": 0.0,
         "estimated_time": 0.0
       },
       {
-        "gap_id": "missing_attr_service_count",
-        "description": "Attribute 'service_count' exists in B but not in A",
+        "gap_id": "missing_attr_service_mesh",
+        "description": "Attribute 'service_mesh' exists in B but not in A",
+        "action": "Fill DEPENDENCY_GAP gap",
+        "estimated_cost": 0.0,
+        "estimated_time": 0.0
+      },
+      {
+        "gap_id": "missing_attr_event_bus",
+        "description": "Attribute 'event_bus' exists in B but not in A",
         "action": "Fill DEPENDENCY_GAP gap",
         "estimated_cost": 0.0,
         "estimated_time": 0.0
@@ -32,39 +39,34 @@
         "estimated_time": 0.0
       }
     ],
-    "summary": "Navigate by filling 3 gaps in sequence",
+    "summary": "Navigate by filling 4 gaps in sequence",
     "total_estimated_cost": 0.0,
     "total_estimated_time": 0.0
   },
   "gap_clusters": [
     {
-      "id": "cluster_semantic_6e9da1e5",
-      "size": 3,
+      "id": "cluster_semantic_6dd9b537",
+      "size": 4,
       "type": "DEPENDENCY_GAP"
     }
   ],
   "patterns": {
-    "void_density": 0.175,
+    "void_density": 0.2111111111111111,
     "gap_distribution": {
-      "DEPENDENCY_GAP": 3
+      "DEPENDENCY_GAP": 4
     },
     "criticality_distribution": {
-      "UNKNOWN": 2,
+      "UNKNOWN": 3,
       "MEDIUM": 1
     },
     "certainty_distribution": {
-      "DEFINITE": 3
+      "DEFINITE": 4
     },
     "fillability_rate": 1.0,
     "insights": [
-      "Most voids are DEPENDENCY_GAP gaps (3 of 3)",
+      "Most voids are DEPENDENCY_GAP gaps (4 of 4)",
       "Most gaps appear fillable (optimistic scenario)"
     ]
   },
-  "recommendations": [
-    "Proceed cautiously - while void is small, remaining gaps may be critical"
-  ],
-  "schema_version": "1.0",
-  "timestamp": "2026-02-16T06:07:34.769836",
-  "void_map_id": "void_map_90bb8707bd3ddba7"
+  "recommendations": []
 }
