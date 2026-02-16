@@ -11,15 +11,15 @@
     "strategy": "gap_hopping",
     "path": [
       {
-        "gap_id": "missing_attr_service_count",
-        "description": "Attribute 'service_count' exists in B but not in A",
+        "gap_id": "missing_attr_deployment_frequency",
+        "description": "Attribute 'deployment_frequency' exists in B but not in A",
         "action": "Fill DEPENDENCY_GAP gap",
         "estimated_cost": 0.0,
         "estimated_time": 0.0
       },
       {
-        "gap_id": "missing_attr_deployment_frequency",
-        "description": "Attribute 'deployment_frequency' exists in B but not in A",
+        "gap_id": "missing_attr_service_count",
+        "description": "Attribute 'service_count' exists in B but not in A",
         "action": "Fill DEPENDENCY_GAP gap",
         "estimated_cost": 0.0,
         "estimated_time": 0.0
@@ -38,7 +38,7 @@
   },
   "gap_clusters": [
     {
-      "id": "cluster_semantic_87afa0f1",
+      "id": "cluster_semantic_6e9da1e5",
       "size": 3,
       "type": "DEPENDENCY_GAP"
     }
@@ -65,6 +65,6 @@
     "Proceed cautiously - while void is small, remaining gaps may be critical"
   ],
   "schema_version": "1.0",
-  "timestamp": "2026-02-16T06:02:23.585421",
+  "timestamp": "2026-02-16T06:05:02.728319",
   "void_map_id": "void_map_90bb8707bd3ddba7"
 }
