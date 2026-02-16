@@ -31,6 +31,16 @@ dependencies = [
     "dataclasses-json>=0.5.0",
 ]
 
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-cov>=4.0.0",
+]
+
+[project.scripts]
+negative-space = "negative_space.__main__:main"
+
 [project.urls]
 Homepage = "https://github.com/WADELABS/negative-space"
 Repository = "https://github.com/WADELABS/negative-space"

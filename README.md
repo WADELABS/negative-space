@@ -1,13 +1,14 @@
-# Fixer's Log: Negative Space
-## Solving the "Unknown Unknowns" Crisis (Phase 3)
+# Negative Space Framework
 
-> "A security research group reached out after a catastrophic breach that 'should have been impossible.' Their entire audit had focused on the components that existed. They had no way to map what was *missing*—the empty spaces where the attacker lived. They didn't need a better scanner; they needed a way to map the architectural void."
+![Tests](https://github.com/WADELABS/negative-space/actions/workflows/tests.yml/badge.svg)
+![Python](https://img.shields.io/badge/python-3.8%2B-blue)
+![License](https://img.shields.io/badge/license-MIT-green)
 
-### The Epistemological "Why": Mapping the Seen to Navigate the Complex
-In the architecture of autonomy, the voids define the system...
+**An epistemology of absence for AI reasoning.** The Negative Space Framework shifts AI focus from interpolation to "Void Mapping"—identifying and classifying gaps (informational, causal, dependency) between current states and desired goals.
 
-## 🧩 The Epistemological "Why"
-Traditional engineering focuses on the assembly of known components. **Negative Space Reasoning** operates on the inverse: it defines the exact shape of missing dependencies, information gaps, and constraint barriers. By treating the "void" as a first-class object, we transform systemic uncertainty into a precisely mapped territory, allowing agentic systems to navigate complexity through exclusion and targeted inquiry.
+> Traditional engineering focuses on assembly. **Negative Space Reasoning** maps what's *missing*—transforming systemic uncertainty into precisely mapped territory for agentic navigation.
+
+<a href="manifesto/MANIFESTO.md">Read the full manifesto →</a>
 
 ## 🧭 The Logic Flow (The Void Engine)
 ```mermaid
@@ -20,6 +21,8 @@ graph TD
     N --> D[Directed Capability Acquisition]
     D --> A
 ```
+
+**Figure 1:** The Void Engine identifies dependency gaps, information voids, and constraint barriers through contrastive analysis rather than interpolation.
 
 ## 🚀 Installation
 
