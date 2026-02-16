@@ -36,10 +36,18 @@ cd negative-space
 pip install -e .
 ```
 
-### From PyPI (Coming Soon)
+### From PyPI (Ready for Publication)
 ```bash
 pip install negative-space
 ```
+
+**Note:** The package is ready for PyPI publication with comprehensive packaging, documentation, and demos.
+
+## 📚 Documentation
+
+- **[Glossary](docs/GLOSSARY.md)** - Core concepts, gap types, and metrics explained
+- **[JSON Schema](docs/VOID_REPORT_SCHEMA.md)** - Void report structure for integration
+- **[Examples](examples/README.md)** - Runnable demos with expected output
 
 ## 🛰️ The "Now": Mapping Architectural Voids
 The following snippet demonstrates use of the `VoidAgent` to perform a rigorous assessment of the gap between a local environment and a production-ready Kubernetes deployment.
@@ -68,12 +76,17 @@ print(f"Mapped {len(critical_voids)} blocking voids in the production path.")
 After installation, you can run the example demos:
 
 ```bash
+# Featured demo - comprehensive showcase
+python examples/featured_demo.py
+
 # Basic demo
 python examples/demo.py
 
 # Advanced portfolio demo
 python examples/portfolio_demo.py
 ```
+
+For detailed documentation on all examples, see [examples/README.md](examples/README.md).
 
 ## 📊 Strategic Metrics
 | Metric | Purpose | Agent Insight |
@@ -82,6 +95,43 @@ python examples/portfolio_demo.py
 | **Gap Criticality** | Impact of the void | "This information gap blocks all downstream causal links." |
 | **Navigability** | Ease of traversing gaps | "The void is highly connected; addressing Gap X resolves Y." |
 | **Fillability** | Feasibility of closure | "This constraint is emergent and may require B-redefinition." |
+
+## 🔧 Implementation Status
+
+| Feature | Status | Description |
+| :--- | :---: | :--- |
+| **Core Framework** | | |
+| VoidAgent & VoidCollective | ✅ Implemented | Agentic void mapping |
+| Gap Classification (8 types) | ✅ Implemented | VoidType enumeration |
+| Gap Criticality Analysis | ✅ Implemented | 5-level criticality system |
+| **Discovery Methods** | | |
+| Contrastive Analysis | ✅ Implemented | Compare A vs B states |
+| Dependency Walk | ✅ Implemented | Traverse dependency chains |
+| Constraint Propagation | ✅ Implemented | Identify constraint violations |
+| Counterfactual Exploration | ✅ Implemented | "What-if" gap discovery |
+| Boundary Probing | ✅ Implemented | Edge case detection |
+| **Metrics** | | |
+| Void Density | ✅ Implemented | Weighted gap volume (0-1) |
+| Gap Criticality | ✅ Implemented | BLOCKING/HIGH/MEDIUM/LOW |
+| Navigability | ✅ Implemented | Path traversability metric |
+| Fillability | ✅ Implemented | Gap closure feasibility |
+| Connectivity | ✅ Implemented | Inter-gap network density |
+| **Navigation** | | |
+| Gap Hopping Strategy | ✅ Implemented | Sequential gap filling |
+| Boundary Skirting | ✅ Implemented | Avoid blockers |
+| Void Bridging | ✅ Implemented | Direct path finding |
+| Constraint Circumvention | ✅ Implemented | Work around constraints |
+| **Analysis** | | |
+| Gap Clustering | ✅ Implemented | Semantic/structural/strategic |
+| Void Visualization | ✅ Implemented | Network & distribution plots |
+| Pattern Recognition | ✅ Implemented | Historical void analysis |
+| **Planned Features** | | |
+| Real-time Void Tracking | 🔄 Planned | Live gap monitoring |
+| Multi-agent Consensus | 🔄 Planned | Enhanced collective mapping |
+| Automated Test Generation | 🔄 Planned | Gap-driven test synthesis |
+| Integration APIs | 🔄 Planned | CI/CD, Jira, GitHub |
+
+**Legend:** ✅ Implemented | 🔄 Planned | ⚠️ Experimental
 
 ---
 docs: formalize high-fidelity documentation and epistemological grounding

@@ -1,0 +1,70 @@
+{
+  "summary": {
+    "void_map_id": "void_map_90bb8707bd3ddba7",
+    "total_gaps": 3,
+    "void_density": 0.175,
+    "navigability": 1.0,
+    "connectivity": 1.0
+  },
+  "critical_findings": [],
+  "navigation_plan": {
+    "strategy": "gap_hopping",
+    "path": [
+      {
+        "gap_id": "missing_attr_deployment_frequency",
+        "description": "Attribute 'deployment_frequency' exists in B but not in A",
+        "action": "Fill DEPENDENCY_GAP gap",
+        "estimated_cost": 0.0,
+        "estimated_time": 0.0
+      },
+      {
+        "gap_id": "missing_attr_service_count",
+        "description": "Attribute 'service_count' exists in B but not in A",
+        "action": "Fill DEPENDENCY_GAP gap",
+        "estimated_cost": 0.0,
+        "estimated_time": 0.0
+      },
+      {
+        "gap_id": "type_mismatch_orchestration",
+        "description": "Type mismatch for 'orchestration': NoneType in A vs str in B",
+        "action": "Fill DEPENDENCY_GAP gap",
+        "estimated_cost": 0.0,
+        "estimated_time": 0.0
+      }
+    ],
+    "summary": "Navigate by filling 3 gaps in sequence",
+    "total_estimated_cost": 0.0,
+    "total_estimated_time": 0.0
+  },
+  "gap_clusters": [
+    {
+      "id": "cluster_semantic_6e9da1e5",
+      "size": 3,
+      "type": "DEPENDENCY_GAP"
+    }
+  ],
+  "patterns": {
+    "void_density": 0.175,
+    "gap_distribution": {
+      "DEPENDENCY_GAP": 3
+    },
+    "criticality_distribution": {
+      "UNKNOWN": 2,
+      "MEDIUM": 1
+    },
+    "certainty_distribution": {
+      "DEFINITE": 3
+    },
+    "fillability_rate": 1.0,
+    "insights": [
+      "Most voids are DEPENDENCY_GAP gaps (3 of 3)",
+      "Most gaps appear fillable (optimistic scenario)"
+    ]
+  },
+  "recommendations": [
+    "Proceed cautiously - while void is small, remaining gaps may be critical"
+  ],
+  "schema_version": "1.0",
+  "timestamp": "2026-02-16T06:07:34.769836",
+  "void_map_id": "void_map_90bb8707bd3ddba7"
+}
